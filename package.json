@@ -18,7 +18,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/abhey-gupta/react-native-bottom-sheet.git"
+    "url": "https://github.com/abhey-gupta/bottom-sheet-react-native.git"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
