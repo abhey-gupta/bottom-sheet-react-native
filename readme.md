@@ -1,17 +1,17 @@
-# React Native Bottom Sheet
+# Bottom Sheet React Native
 
 A customizable, animated bottom sheet component for React Native applications.
 
 ## Installation
 
 ```bash
-npm install react-native-bottom-sheet
+npm install bottom-sheet-react-native
 ```
 
 or if you're using yarn:
 
 ```bash
-yarn add react-native-bottom-sheet
+yarn add bottom-sheet-react-native
 ```
 
 ## Dependencies
@@ -32,7 +32,7 @@ Here's a basic example of how to use the BottomSheet component:
 ```jsx
 import React, { useRef } from "react";
 import { View, Button } from "react-native";
-import { BottomSheet, BottomSheetMethods } from "react-native-bottom-sheet";
+import { BottomSheet, BottomSheetMethods } from "bottom-sheet-react-native";
 
 const App = () => {
   const bottomSheetRef = useRef < BottomSheetMethods > null;
