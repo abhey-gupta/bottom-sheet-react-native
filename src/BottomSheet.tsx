@@ -10,7 +10,8 @@ import tailwind from "twrnc";
 
 interface BottomSheetProps {
   children: React.ReactNode;
-  minHeight: number | string;
+  minHeight?: number | string;
+  closeOnOutsideClick?: boolean;
 }
 
 export interface BottomSheetMethods {
@@ -20,7 +21,7 @@ export interface BottomSheetMethods {
 
 const BottomSheet = forwardRef<BottomSheetMethods, BottomSheetProps>(
   (props, ref) => {
-    const { children, minHeight } = props;
+    const { children, minHeight = "30%", closeOnOutsideClick = true } = props;
     const [isRendered, setIsRendered] = useState(false);
     const isVisible = useSharedValue(false);
 
@@ -50,15 +51,17 @@ const BottomSheet = forwardRef<BottomSheetMethods, BottomSheetProps>(
       setIsRendered(false);
     };
 
+    const closeSheet = () => {
+      isVisible.value = false;
+      setTimeout(hideSheet, 300);
+    };
+
     useImperativeHandle(ref, () => ({
       open: () => {
         setIsRendered(true);
         isVisible.value = true;
       },
-      close: () => {
-        isVisible.value = false;
-        setTimeout(hideSheet, 300);
-      },
+      close: closeSheet,
     }));
 
     if (!isRendered) return null;
@@ -79,8 +82,9 @@ const BottomSheet = forwardRef<BottomSheetMethods, BottomSheetProps>(
         <Pressable
           style={tailwind`flex-1`}
           onPress={() => {
-            isVisible.value = false;
-            setTimeout(hideSheet, 300);
+            if (closeOnOutsideClick) {
+              closeSheet();
+            }
           }}
         />
         <Animated.View

@@ -48,7 +48,7 @@ const App = () => {
   return (
     <View style={{ flex: 1 }}>
       <Button title="Open Bottom Sheet" onPress={openBottomSheet} />
-      <BottomSheet ref={bottomSheetRef} minHeight={300}>
+      <BottomSheet ref={bottomSheetRef}>
         <View style={{ padding: 20 }}>
           {/* Your bottom sheet content goes here */}
           <Button title="Close" onPress={closeBottomSheet} />
@@ -65,10 +65,11 @@ export default App;
 
 The BottomSheet component accepts the following props:
 
-| Prop      | Type             | Required | Default | Description                                                                                                |
-| --------- | ---------------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------- |
-| children  | React.ReactNode  | Yes      | -       | The content to be displayed inside the bottom sheet.                                                       |
-| minHeight | number \| string | Yes      | -       | The minimum height of the bottom sheet. Can be a number (interpreted as pixels) or a string (e.g., '50%'). |
+| Prop                | Type             | Required | Default | Description                                                                                                |
+| ------------------- | ---------------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------- |
+| children            | React.ReactNode  | Yes      | -       | The content to be displayed inside the bottom sheet.                                                       |
+| minHeight           | number \| string | No       | "30%"   | The minimum height of the bottom sheet. Can be a number (interpreted as pixels) or a string (e.g., '50%'). |
+| closeOnOutsideClick | boolean          | No       | true    | Determines whether clicking outside the bottom sheet should close it.                                      |
 
 ## Methods
 
