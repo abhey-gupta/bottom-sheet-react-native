@@ -1,3 +1,7 @@
+Here's an updated version of the README to reflect the changes made to the `BottomSheet` component:
+
+---
+
 # Bottom Sheet React Native
 
 A customizable, animated bottom sheet component for React Native applications.
@@ -41,17 +45,22 @@ const App = () => {
     bottomSheetRef.current?.open();
   };
 
-  const closeBottomSheet = () => {
+  const handleOutsideClick = () => {
+    // Custom logic when clicking outside the bottom sheet
+    console.log("Outside area clicked!");
     bottomSheetRef.current?.close();
   };
 
   return (
     <View style={{ flex: 1 }}>
       <Button title="Open Bottom Sheet" onPress={openBottomSheet} />
-      <BottomSheet ref={bottomSheetRef}>
+      <BottomSheet ref={bottomSheetRef} onClickOutside={handleOutsideClick}>
         <View style={{ padding: 20 }}>
           {/* Your bottom sheet content goes here */}
-          <Button title="Close" onPress={closeBottomSheet} />
+          <Button
+            title="Close"
+            onPress={() => bottomSheetRef.current?.close()}
+          />
         </View>
       </BottomSheet>
     </View>
@@ -65,11 +74,11 @@ export default App;
 
 The BottomSheet component accepts the following props:
 
-| Prop                | Type             | Required | Default | Description                                                                                                |
-| ------------------- | ---------------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------- |
-| children            | React.ReactNode  | Yes      | -       | The content to be displayed inside the bottom sheet.                                                       |
-| minHeight           | number \| string | No       | "30%"   | The minimum height of the bottom sheet. Can be a number (interpreted as pixels) or a string (e.g., '50%'). |
-| closeOnOutsideClick | boolean          | No       | true    | Determines whether clicking outside the bottom sheet should close it.                                      |
+| Prop           | Type             | Required | Default | Description                                                                                                |
+| -------------- | ---------------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------- |
+| children       | React.ReactNode  | Yes      | -       | The content to be displayed inside the bottom sheet.                                                       |
+| minHeight      | number \| string | No       | "30%"   | The minimum height of the bottom sheet. Can be a number (interpreted as pixels) or a string (e.g., '50%'). |
+| onClickOutside | () => void       | No       | -       | A callback function triggered when clicking outside the bottom sheet.                                      |
 
 ## Methods
 
@@ -93,7 +102,7 @@ bottomSheetRef.current?.close();
 
 ## Styling
 
-The BottomSheet uses [twrnc](https://github.com/jaredh159/tailwind-react-native-classnames) for styling. You can customize the appearance by modifying the tailwind classes in the component.
+The BottomSheet uses [twrnc](https://github.com/jaredh159/tailwind-react-native-classnames) for styling. You can customize the appearance by modifying the Tailwind classes in the component.
 
 ## Animations
 
@@ -106,3 +115,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License.
+
+---
+
+This update reflects the new `onClickOutside` prop and how users can handle outside clicks with custom logic.
